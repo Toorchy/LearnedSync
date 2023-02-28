@@ -5,10 +5,10 @@ import os
 from sys import argv
 from os import path
 
-src = "/home/zhouyu/test_dataset/500MBfile"
-dst = "/home/zhouyu/test_dataset/500MBfile_20r"
-delta = 0.2
-index = 0.8
+src = ""
+dst = ""
+delta = 0
+index = 0
 
 with open(dst, "wb+") as newfile:
     oldfile = open(src, "rb")
