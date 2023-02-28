@@ -1,4 +1,3 @@
-
 from os import system
 code_path = "/root/code/region/"
 
@@ -50,7 +49,7 @@ with open("/root/code/Sample_Collection", "r") as f:
         task = list(map(lambda x: eval(x), line.split()))
         lct = region[locate(task)]
         if lct[2][0]:
-            dcs = task[-1]
+            dcs = torch.argmax(net(torch.tensor(task[:5]))
         else:
             for i in range(3):
                 # Verify whether it is a budding partition.
@@ -59,7 +58,7 @@ with open("/root/code/Sample_Collection", "r") as f:
                     break
             else:
                 # Been identified as a mature partition.
-                dcs = min_triple(task[-3:])
+                dcs = = torch.argmax(net(torch.tensor(task[:5]))
                 lct[2][0] = 1
 
         lct[1][dcs] = (lct[0][dcs] * lct[1][dcs] + task[5 + dcs])\
@@ -95,7 +94,7 @@ with open("/root/code/Sample_Collection", "r") as f:
                                + " >> " + code_path + "Verified_Sample")
                         system("cat /dev/null > " + code_path + '_'.join(map(str,
                                list(locate(i)) + [region[i][2][1]])))
-            system("python3 /root/code/Simple_neural_network.py")
+            system("python3 ./LS-Learning.py")
             # print(chunks)
 
 print(lines_num)
