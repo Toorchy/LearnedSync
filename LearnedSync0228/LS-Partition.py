@@ -106,12 +106,6 @@ with open("/root/code/Sample_Collection", "r") as f:
                                + " >> " + code_path + "Verified_Sample")
                         system("cat /dev/null > " + code_path + '_'.join(map(str,
                                list(locate(i)) + [region[i][2][1]])))
-                # elif region[i][2][0] == 2:
-                    # chunks += 1
-                    #     system("cat " + code_path + '_'.join(map(str, list(locate(i)) + [region[i][2][1]]))
-                    #            + " >> " + code_path + "Verified_Sample")
-                    #     system("cat /dev/null > " + code_path +
-                    #            '_'.join(map(str, list(locate(i)) + [region[i][2][1]])))
             system("python3 /root/code/Simple_neural_network.py")
             # print(chunks)
 
