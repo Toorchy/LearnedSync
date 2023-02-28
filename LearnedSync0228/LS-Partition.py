@@ -24,8 +24,6 @@ for i in Siz:
                             pass
 with open(code_path + "Verified_Sample", "w"):
     pass
-with open(code_path + "Learning", "w"):
-    pass
 with open(code_path + "Label", "w"):
     pass
 
@@ -42,15 +40,6 @@ def locate(x):
             ans.append(Env_info[i][-1])
 
     return tuple(ans)
-
-def min_triple(x):
-    if x[0] < x[1]:
-        if x[0] < x[2]:
-            return 0
-    elif x[1] < x[2]:
-        return 1
-    return 2
-
 
 system("rm /root/code/net.pkl")
 
@@ -96,7 +85,7 @@ with open("/root/code/Sample_Collection", "r") as f:
                 if region[i][2][0] == 1:
                     rg_tm = sorted(region[i][1])
                     # print(rg_tm)
-                    if rg_tm[0] < rg_tm[1]:
+                    if rg_tm[0] < 0.9 * rg_tm[1]:
                         region[i][2][0] = 2
                         for j in range(3):
                             if rg_tm[0] == region[i][1][j]:
@@ -116,7 +105,6 @@ print(len(region))
 # Show results.
 total_time = 0
 for j in region.values():
-    # print(tmp)
     for p in range(3):
         total_time += j[0][p] * j[1][p]
 
