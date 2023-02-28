@@ -8,7 +8,6 @@ class Net(torch.nn.Module):
         super(Net, self).__init__()
         self.hidden1 = torch.nn.Linear(n_input, n_hidden)
         self.hidden2 = torch.nn.Linear(n_hidden, n_hidden)
-        # self.hidden3 = torch.nn.Linear(n_hidden, n_hidden)
         self.predict = torch.nn.Linear(n_hidden, n_output)
 
     def forward(self, input):
@@ -16,10 +15,7 @@ class Net(torch.nn.Module):
         out = torch.sigmoid(out)
         out = self.hidden2(out)
         out = torch.sigmoid(out)
-        # out = self.hidden3(out)
-        # out = torch.sigmoid(out)
         out = self.predict(out)
-        # out = F.softmax(out)
         return out
 
 x, y = [], []
@@ -34,7 +30,6 @@ with open("/root/code/region/Verified_Sample", "r+") as f:
         y.append(sample[-1])
         lines_num += 1
         if lines_num == unlimit:
-            unlimit += 7
             break
 print(lines_num)
 
@@ -50,7 +45,7 @@ x, y = Variable(x), Variable(y)
 try:
     net = torch.load('net.pkl')
 except:
-    net = Net(5, 20, 3)
+    net = Net(5, 64, 3)
 print(net)
 
 # Training regression function
