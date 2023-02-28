@@ -10,7 +10,7 @@ def visitDir(path):
             visitDir(pathname)  
         else:
             byte = os.path.getsize(pathname)
-            with open(dest + format(ordial, "04"), "wb+") as fo:  # 新文件路径
+            with open(dest + format(ordial, "04"), "wb+") as fo: 
                 f = open(pathname, "rb")
                 fo.write(f.read(int(byte * (0.5 - delta))))
                 f.seek(int(byte * (0.5 + delta)))
@@ -18,12 +18,10 @@ def visitDir(path):
                 f.close()
             ordial += 1
 	    
-# 增量
+
 delta = 0.
-# 原文件路径
-src = "/home/zhouyu/Dropbox-1/"
-# 新文件路径
-dest = "/home/zhouyu/test-old/"
+src = ""
+dest = ""
 
 ordial = 0
 rm = "rm -r " + dest + "*"
