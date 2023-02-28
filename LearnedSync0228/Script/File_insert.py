@@ -7,7 +7,7 @@ def visitDir(path):
         #pathname = os.path.join(path, "0" + str(p))
         pathname = os.path.join(path,  str(p))
         byte = os.path.getsize(pathname)
-        with open(dest + format(p, "0" + li_dig), "wb+") as fo:  # 新文件路径
+        with open(dest + format(p, "0" + li_dig), "wb+") as fo:  
             f = open(pathname, "rb")
             if delta < 0:
                 fo.write(f.read(int(byte * (0.5 + delta))))
@@ -16,7 +16,7 @@ def visitDir(path):
             else:
                 fo.write(f.read(int(byte * (0.5 - delta / 2))))
                 # fo.write(f.read(int(byte / 2)))
-                for i in range(int(byte * delta / 2)):           # 0.5
+                for i in range(int(byte * delta / 2)):
                     fo.write(b'01')
                 if delta:
                     fo.write(b'0')
@@ -26,8 +26,8 @@ def visitDir(path):
 
 
 delta = 0.5
-src = "/home/zhouyu/dataset/archive1/"     # 原文件路径
-dest = "/home/zhouyu/test_data/archive_plus5/"      # 新文件路径
+src = ""
+dest = ""
 
 
 li = int(os.popen("ls {} -l | grep 'r' | wc -l"
