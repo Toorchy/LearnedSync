@@ -26,7 +26,7 @@ else:
 
 print(f'file：{filename}')
 # Set the path to save the file
-filepath = "/home/zhouyu/dataset/"
+filepath = ""
 f = open(filepath + filename, 'w')
 # f.write('q')
 times = int(size / 10)
