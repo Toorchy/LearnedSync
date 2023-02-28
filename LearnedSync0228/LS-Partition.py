@@ -1,5 +1,22 @@
+import torch
 from os import system
-code_path = "/root/code/region/"
+
+class Net(torch.nn.Module):
+    def __init__(self, n_input, n_hidden, n_output):
+        super(Net, self).__init__()
+        self.hidden1 = torch.nn.Linear(n_input, n_hidden)
+        self.hidden2 = torch.nn.Linear(n_hidden, n_hidden)
+        self.predict = torch.nn.Linear(n_hidden, n_output)
+
+    def forward(self, input):
+        out = self.hidden1(input)
+        out = torch.sigmoid(out)
+        out = self.hidden2(out)
+        out = torch.sigmoid(out)
+        out = self.predict(out)
+        return out
+
+code_path = ""
 
 region = {}
 Siz = [0.01, 0.05, 0.1, 0.14, 0.18]
@@ -40,7 +57,7 @@ def locate(x):
 
     return tuple(ans)
 
-system("rm /root/code/net.pkl")
+system("rm net.pkl")
 
 lines_num = 0
 with open("/root/code/Sample_Collection", "r") as f:
